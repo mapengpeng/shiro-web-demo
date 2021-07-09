@@ -1,0 +1,55 @@
+{
+  "homeInfo": {
+    "title": "首页",
+    "href": "home"
+  },
+  "logoInfo": {
+    "title": "LAYUI MINI",
+    "image": "images/logo.png",
+    "href": ""
+  },
+  "menuInfo": [
+    {
+      "title": "常规管理",
+      "icon": "fa fa-address-book",
+      "href": "",
+      "target": "_self",
+      "child": [
+        {
+          "title": "主页",
+          "href": "",
+          "icon": "fa fa-home",
+          "target": "_self",
+          "child": [
+            {
+              "title": "在线用户管理",
+              "href": "onlineUser",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            }
+          ]
+        },
+        {
+          "title": "权限",
+          "href": "",
+          "icon": "fa fa-home",
+          "target": "_self",
+          "child": [
+            {
+              "title": "动态权限",
+              "href": "dynamicAuthor",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            },
+            {
+              "title": "密码加密",
+              "href": "encrypwd",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

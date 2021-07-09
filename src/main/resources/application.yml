@@ -1,0 +1,56 @@
+﻿spring:
+  main:
+    allow-bean-definition-overriding: true
+  freemarker:
+    template-loader-path: classpath:/templates/
+    suffix: .ftl
+    request-context-attribute: request
+    prefer-file-system-access: false
+  redis:
+    database: 0 #Redis数据库索引（默认为0）
+    host: localhost
+    port: 6379
+    password:
+    jedis:
+      pool:
+        max-active: 8 #连接池最大连接数（使用负值表示没有限制）
+        max-wait: -1ms #连接池最大阻塞等待时间（使用负值表示没有限制）
+        max-idle: 8 #连接池中的最大空闲连接
+        min-idle: 0
+
+
+server:
+  port: 8199
+  tomcat:
+    uri-encoding: UTF-8
+    max-threads: 1000
+    min-spare-threads: 30
+  servlet:
+    context-path: /shiro-web
+
+mapp:
+  shiro:
+    shiro-enable: true                  # 开启shiro权限开关，关闭后，权限将失效
+    captcha-enable: true                # 开启验证码功能
+    force-logout-enable: true           # 开启强制退出
+    one-online-enable: true             # 开启用户只能一处登录限制
+    algorithm-name: SHA-256             # 密码加密算法
+    salt: 1a2b3c4k5j8f9d_?!             # 加密盐
+    iterations: 2                       # 加密迭代次数
+    session-time-out: 120               # session过期时间 默认120分钟
+    session-valid-interval: 20          # session调度器调度间隔 默认10分钟
+    login-url: /login                   # 登录页面
+    unauthorized-url: /403              # 无权限
+    success-url: /index                 # 登录成功后地址
+    force-logout-url: /forceLogout      # 强制退出后地址
+    kickout-url: /kickout               # 账号其他地方登录后地址
+    cache-type: map                     # 缓存类型  map，redis，EHCACHE, 默认map内存实现方式
+    cas-enable: false                    # 是否开始单点登录
+    cas-server: http://localhost:8090/cas/    # cas地址
+    service: http://localhost:8199/shiro-web/        # cas认证成功后返回地址
+    chain-map:                          # 自定义过滤规则
+      "[/getVersion]": roles[ADMIN, TEST]            # 不需要权限认证就可访问
+      "[/getOnlineUser]": roles[ADMIN, TEST]   # 访问getOnlineUser需要ADMIN角色
+
+
+
